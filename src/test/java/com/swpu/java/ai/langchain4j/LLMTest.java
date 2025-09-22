@@ -1,6 +1,6 @@
 package com.swpu.java.ai.langchain4j;
 
-import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.ollama.OllamaChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,18 @@ public class LLMTest {
 
     @Autowired
     private OpenAiChatModel openAiChatModel;
-    @Autowired
-    private ChatLanguageModel chatLanguageModel;
     @Test
-    public void testSpringBoot(){
-        String answer = chatLanguageModel.chat("你是谁");
+    public void testDeepseek(){
+        String answer = openAiChatModel.chat("你是谁");
         System.out.println("answer = " + answer);
     }
+
+    @Autowired
+    private OllamaChatModel ollamaChatModel;
+    @Test
+    public void testOllama() {
+        String answer = ollamaChatModel.chat("你是谁");
+        System.out.println("answer = " + answer);
+    }
+
 }
